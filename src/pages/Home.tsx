@@ -49,11 +49,19 @@ const steps = [
 // Kleinere features die niet bij één tab horen. Tint = categoriekleur uit de app.
 const extras = [
   { emoji: '🔁', color: 'var(--cat-schoonmaken)', title: 'Terugkerende taken', text: 'Stofzuigen elke maandag, afval elke donderdag. Vaste taken komen vanzelf terug.' },
-  { emoji: '🛒', color: 'var(--cat-boodschappen)', title: 'Boodschappenlijst', text: 'Een gedeelde lijst voor het hele huis. Wie langs de supermarkt gaat, ziet wat er op moet.' },
   { emoji: '🔔', color: 'var(--cat-afval)', title: 'Herinneringen', text: 'Stuur een huisgenoot een duwtje met een pushmelding, zonder dat iemand de zeurpiet hoeft te zijn.' },
   { emoji: '✏️', color: 'var(--cat-keuken)', title: 'Streepjes en straf', text: 'Taak niet gedaan op de dag zelf? Dan volgt een streepje. Jullie bepalen samen na hoeveel streepjes er een straf komt.' },
   { emoji: '🏆', color: 'var(--cat-was)', title: 'Ranglijst', text: 'Zie wie deze maand de meeste taken heeft gedaan. Een beetje competitie werkt verrassend goed.' },
   { emoji: '🎩', color: 'var(--cat-overig)', title: 'Eendje aankleden', text: 'Hoge hoed, piratenhoed, zonnebril of vlinderstrik: geef je eendje de beste looks.' },
+]
+
+// Voorbeeldtaken voor de telefoon-mockup. Alleen categorieën die nog in de app
+// zitten (huismaatje/constants/Categories.ts): Schoonmaken, Keuken, Afval, Overig.
+const mockTasks = [
+  { emoji: '🧹', color: 'var(--cat-schoonmaken)', name: 'Stofzuigen', meta: 'Schoonmaken · Ma · Jij', done: true },
+  { emoji: '🍳', color: 'var(--cat-was)', name: 'Vaatwasser uitruimen', meta: 'Keuken · Di · Sanne', done: false },
+  { emoji: '🗑️', color: 'var(--cat-afval)', name: 'Vuilnis buiten zetten', meta: 'Afval · Do · Jij', done: false },
+  { emoji: '✨', color: 'var(--cat-overig)', name: 'Planten water geven', meta: 'Overig · Za · Ruben', done: false },
 ]
 
 const faq = [
@@ -113,6 +121,50 @@ export default function Home() {
               <p>{f.text}</p>
             </article>
           ))}
+        </div>
+      </section>
+
+      <section className="container preview-section">
+        <div className="preview-card">
+          <div className="phone" role="img" aria-label="Het Huis-scherm van de Huismaatje-app op een telefoon">
+            <div className="phone-screen" aria-hidden>
+              <div className="phone-notch" />
+              <p className="phone-title">Ons huis</p>
+              <div className="phone-house">
+                <img className="house" src="/house.png" alt="" />
+                <img className="duck" src="/duck.png" alt="" />
+              </div>
+              <p className="phone-label">Deze week</p>
+              <ul className="phone-tasks">
+                {mockTasks.map((t) => (
+                  <li key={t.name} className={t.done ? 'done' : undefined}>
+                    <span className="phone-cat" style={{ background: t.color }}>{t.emoji}</span>
+                    <span className="phone-task-text">
+                      <span className="phone-task-name">{t.name}</span>
+                      <span className="phone-task-meta">{t.meta}</span>
+                    </span>
+                    <span className="phone-check">{t.done ? '✓' : ''}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="phone-add">+ Taak toevoegen</div>
+              <div className="phone-tabbar">
+                <span className="active">🏠</span>
+                <span>📅</span>
+                <span>📊</span>
+                <span>🦆</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p className="section-label">Zo ziet het eruit</p>
+            <h2>Alles van het huis op één scherm.</h2>
+            <p>
+              Bovenaan jullie huis, daaronder de taken van deze week. Wie wat moet doen en
+              wanneer, zie je in één oogopslag. Afvinken kost één tik, en je huisgenoten
+              zien het meteen.
+            </p>
+          </div>
         </div>
       </section>
 
