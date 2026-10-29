@@ -71,7 +71,7 @@ const faq = [
 ]
 
 // Seconde in mockup.mp4 waarop de telefoon stilstaat (zie .phone-video in index.css).
-const VIDEO_START = 7
+const VIDEO_START = 11
 
 export default function Home() {
   return (
@@ -121,7 +121,7 @@ export default function Home() {
       <section className="container preview-section">
         <div className="preview-card">
           <div className="phone-video">
-            {/* De eerste seconden zoomt de telefoon in; die slaan we over, ook bij herhalen. */}
+            {/* De eerste ~10 seconden schuift de telefoon nog; die slaan we over, ook bij herhalen. */}
             <video
               src={`/mockup.mp4#t=${VIDEO_START}`}
               autoPlay

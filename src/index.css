@@ -112,9 +112,9 @@ main { flex: 1; }
 /* De video is 1920x1080 met de telefoon in het midden op zwart (x 723-1120,
    y 150-970). De wrapper heeft de maat van alleen de telefoon en de video wordt
    zo verschoven dat precies dat stuk zichtbaar is. */
-.phone-video { position: relative; width: 300px; aspect-ratio: 398 / 821; overflow: hidden; border-radius: 15% / 7.3%; background: #000; box-shadow: var(--shadow-raised); }
-/* De export is donkerder dan de app: wit komt uit op ~220 i.p.v. 255. brightness(1.15) trekt dat recht. */
-.phone-video video { position: absolute; width: 482.4%; height: 131.55%; left: -181.66%; top: -18.27%; max-width: none; filter: brightness(1.15); }
+.phone-video { position: relative; width: 300px; aspect-ratio: 602 / 1252; overflow: hidden; border-radius: 15% / 7.3%; background: #000; box-shadow: var(--shadow-raised); }
+/* Video is 1080x1920; de telefoon staat (na de intro) op x 243-844, y 381-1632. Zo vult hij precies het kader. */
+.phone-video video { position: absolute; width: 179.4%; height: 153.35%; left: -40.37%; top: -30.43%; max-width: none; }
 
 /* Zo werkt het: genummerde stappen op witte kaarten */
 .steps-section { padding-top: 40px; padding-bottom: 24px; }
