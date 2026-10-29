@@ -8,5 +8,7 @@ export const site = {
   company: 'Huismaatje',
   kvk: '',
   address: '',
+  // Naam van de maker, voor 'Over de ontwikkelaar'. Leeg = niet tonen.
+  developer: '',
   legalUpdated: '29 oktober 2026',
 }

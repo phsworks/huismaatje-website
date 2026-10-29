@@ -28,6 +28,7 @@ export default function Layout() {
             <Link to="/privacy">Privacyverklaring</Link>
             <Link to="/voorwaarden">Gebruiksvoorwaarden</Link>
             <Link to="/support">Support</Link>
+            <Link to="/over-de-ontwikkelaar">Over de ontwikkelaar</Link>
             <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>
           </nav>
         </div>

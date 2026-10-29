@@ -15,10 +15,36 @@ export default function Support() {
           meestal binnen twee werkdagen.
         </p>
 
+        <h2>🏠 Bij een huis komen</h2>
+        <p>
+          Vraag een huisgenoot om de 6-cijferige code van jullie huis. Kies bij het
+          aanmelden voor "Huis joinen" en vul de code in.
+        </p>
+
+        <h2>🔔 Ik krijg geen meldingen</h2>
+        <p>
+          Ga in de app naar je profiel. Bij <strong>Meldingen</strong> zie je of ze aan
+          staan; tik erop om naar de instellingen van je telefoon te gaan. Bij{' '}
+          <strong>Koppeling met server</strong> zie je of je telefoon goed gekoppeld is.
+          Staat daar een foutmelding? Tik erop om opnieuw te koppelen, of stuur ons een
+          screenshot.
+        </p>
+
+        <h2>🧭 Rondleiding opnieuw bekijken</h2>
+        <p>
+          Kwijt waar alles zit? In je profiel staat <strong>Rondleiding opnieuw
+          bekijken</strong>, een korte uitleg van elke tab.
+        </p>
+
         <h2>🗑️ Account verwijderen</h2>
         <p>
-          Je kunt je account en alle bijbehorende gegevens laten verwijderen door een
-          mail te sturen naar{' '}
+          Je kunt je account zelf verwijderen in de app: ga naar je profiel en kies
+          onderaan <strong>Account verwijderen</strong>. Je profiel, je eendje en je
+          plek in het huis worden dan direct verwijderd. Afgevinkte taken blijven voor
+          je huisgenoten zichtbaar, zonder je naam.
+        </p>
+        <p>
+          Kom je niet meer in de app? Stuur dan een mail naar{' '}
           <a href={`mailto:${site.contactEmail}?subject=Account verwijderen`}>{site.contactEmail}</a>{' '}
           vanaf het e-mailadres waarmee je bent geregistreerd. We verwijderen je
           gegevens binnen 30 dagen. Lees meer in onze <Link to="/privacy">privacyverklaring</Link>.

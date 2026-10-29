@@ -18,6 +18,14 @@
   --tab-overzicht: #fff2c2;
   --tab-profiel: #d7f3c2;
 
+  /* CategoryColors[].bg */
+  --cat-schoonmaken: #bde8ff;
+  --cat-boodschappen: #c9f5b0;
+  --cat-keuken: #ffd0d0;
+  --cat-afval: #ffe98a;
+  --cat-was: #e9cfff;
+  --cat-overig: #ffd0dc;
+
   --r-sm: 12px;
   --r-md: 16px;
   --r-lg: 20px;
@@ -37,7 +45,8 @@
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--bg); }
 a { color: var(--primary); font-weight: 600; text-decoration: none; }
-a:hover { text-decoration: underline; }
+a[href^='mailto:'] { overflow-wrap: anywhere; }
+@media (hover: hover) { a:hover { text-decoration: underline; } }
 h1, h2, h3 { text-wrap: balance; }
 
 /* Type.screenTitle / cardTitle / sectionLabel */
@@ -57,7 +66,7 @@ main { flex: 1; }
 .logo img { border-radius: 10px; }
 .nav { display: flex; gap: 6px; }
 .nav a { color: var(--text-mid); font-weight: 600; font-size: 14px; padding: 8px 12px; border-radius: var(--r-sm); }
-.nav a:hover { text-decoration: none; background: var(--bg); }
+@media (hover: hover) { .nav a:hover { text-decoration: none; background: var(--bg); } }
 .nav a.active { color: var(--text); background: var(--tab-huis); }
 
 /* Hero */
@@ -67,35 +76,68 @@ main { flex: 1; }
 .lead { font-size: 18px; color: var(--text-mid); max-width: 520px; margin: 0 0 28px; }
 .pill { display: inline-flex; align-items: center; gap: 6px; margin: 0 0 18px; padding: 6px 12px; border-radius: var(--r-sm); background: var(--card); box-shadow: var(--shadow-card); font-size: 13px; font-weight: 700; }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; }
-.hero-art { position: relative; background: var(--card); border-radius: var(--r-card); box-shadow: var(--shadow-raised); overflow: hidden; aspect-ratio: 1; }
-.hero-art .house { width: 100%; height: 100%; object-fit: cover; display: block; }
-.hero-art .duck { position: absolute; right: 6%; bottom: 2%; width: 34%; }
+/* Huis kleiner en links op een grasstrook, eendje ernaast in de vrije ruimte.
+   De achtergrond is de luchtkleur van house.webp, zodat de randen wegvallen. */
+.hero-art { position: relative; background: #eafefe; border-radius: var(--r-card); box-shadow: var(--shadow-raised); overflow: hidden; aspect-ratio: 1; }
+.hero-art::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 6%; background: #a8cf45; }
+.hero-art .house { position: absolute; left: 3%; bottom: 5%; width: 72%; display: block; }
+/* De zon zat in house.webp boven het dak; nu een los plaatje in de hoek. */
+.hero-art .sun { position: absolute; top: 4%; right: 4%; width: 22%; }
+.hero-art .duck { position: absolute; right: 5%; bottom: 4%; width: 20%; z-index: 1; }
 
 /* Knoppen: primaryButton en addTaskButton uit de app */
 .button { display: inline-flex; align-items: center; gap: 6px; padding: 16px 28px; border-radius: var(--r-lg); background: var(--primary); color: #fff; font-weight: 700; font-size: 15px; transition: transform 120ms ease, background 120ms ease; }
-.button:hover { text-decoration: none; background: var(--primary-dark); }
+@media (hover: hover) {
+  .button:hover { text-decoration: none; background: var(--primary-dark); }
+  }
 .button:active { transform: scale(0.97); }
 .button-ghost { background: var(--card); color: var(--text-mid); box-shadow: var(--shadow-card); }
-.button-ghost:hover { background: var(--card); color: var(--text); }
 
 /* Features: één kaart per tab, in de kleur van die tab */
 .features-section { padding-top: 56px; padding-bottom: 24px; }
-.features { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.features { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 16px; }
 .feature { border-radius: var(--r-card); padding: 24px; }
 .feature p { margin: 0; color: var(--text-mid); font-size: 15px; }
 .emoji-box { width: 48px; height: 48px; border-radius: var(--r-sm); background: rgba(255, 255, 255, 0.7); display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 14px; }
+.emoji-box img { width: 34px; height: 34px; object-fit: contain; }
 .tint-huis { background: var(--tab-huis); }
 .tint-kalender { background: var(--tab-kalender); }
 .tint-overzicht { background: var(--tab-overzicht); }
 .tint-profiel { background: var(--tab-profiel); }
 
+/* Zo werkt het: genummerde stappen op witte kaarten */
+.steps-section { padding-top: 40px; padding-bottom: 24px; }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 16px; }
+.step { background: var(--card); border-radius: var(--r-card); box-shadow: var(--shadow-card); padding: 24px; }
+.step p { margin: 0; color: var(--text-mid); font-size: 15px; }
+.step-number { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: var(--primary); color: #fff; font-weight: 700; margin-bottom: 14px; }
+
+/* Extra features: compacte rijen, icoonblokje in categoriekleur zoals SettingsRow */
+.extras-section { padding-top: 40px; padding-bottom: 24px; }
+.extras { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 12px; }
+.extra { display: flex; gap: 14px; align-items: flex-start; background: var(--card); border-radius: var(--r-lg); box-shadow: var(--shadow-card); padding: 18px; }
+.extra .emoji-box { flex: none; width: 40px; height: 40px; font-size: 20px; margin: 0; }
+.extra .card-title { font-size: 16px; margin-bottom: 2px; }
+.extra p { margin: 0; color: var(--text-mid); font-size: 14px; }
+
 /* Eendje-uitleg */
-.duck-section { padding-top: 32px; padding-bottom: 80px; }
+.duck-section { padding-top: 40px; padding-bottom: 56px; }
 .duck-card { background: var(--card); border-radius: var(--r-card); box-shadow: var(--shadow-raised); padding: 32px; display: grid; grid-template-columns: 200px 1fr; gap: 32px; align-items: center; }
 .duck-stage { background: var(--tab-profiel); border-radius: var(--r-lg); aspect-ratio: 1; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 8px; }
 .duck-stage img { width: 80%; }
 .duck-card h2 { font-size: 26px; font-weight: 700; letter-spacing: -0.5px; margin: 0 0 8px; }
 .duck-card p { color: var(--text-mid); margin: 0; }
+
+/* Veelgestelde vragen */
+.faq-section { padding-top: 0; padding-bottom: 80px; }
+.faq { background: var(--card); border-radius: var(--r-card); box-shadow: var(--shadow-card); margin-bottom: 14px; }
+.faq details { border-bottom: 1px solid var(--border); }
+.faq details:last-child { border-bottom: 0; }
+.faq summary { cursor: pointer; padding: 18px 22px; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: '+'; color: var(--text-mid); font-weight: 700; }
+.faq details[open] summary::after { content: '−'; }
+.faq details p { margin: 0; padding: 0 22px 18px; color: var(--text-mid); font-size: 15px; }
 
 /* Tekstpagina's: titel op de achtergrond, inhoud op een witte kaart */
 .doc { max-width: 760px; padding-top: 32px; padding-bottom: 80px; }
@@ -106,6 +148,9 @@ main { flex: 1; }
 .doc-card h2 { font-size: 17px; font-weight: 600; letter-spacing: -0.3px; margin: 28px 0 6px; }
 .doc-card p, .doc-card li { color: #3a4152; font-size: 15px; }
 .doc-card ul { padding-left: 20px; }
+.dev-intro { display: flex; gap: 18px; align-items: center; background: var(--tab-profiel); border-radius: var(--r-lg); padding: 16px 20px; }
+.dev-intro img { flex: none; }
+.dev-intro p { margin: 0; }
 .muted { color: var(--text-mid); font-size: 14px; }
 
 .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--r-md); }
@@ -126,8 +171,32 @@ th { background: var(--bg); color: var(--text-mid); font-size: 12px; font-weight
   .hero-inner { grid-template-columns: 1fr; }
   .duck-card { grid-template-columns: 1fr; text-align: center; padding: 24px; }
   .duck-stage { max-width: 200px; margin: 0 auto; }
+  .hero-art { width: 100%; max-width: 340px; margin: 0 auto; }
+  .lead { font-size: 17px; }
+  .actions .button { flex: 1 1 auto; justify-content: center; }
+  .features-section { padding-top: 40px; }
+  .duck-section { padding-bottom: 40px; }
+  .faq-section { padding-bottom: 56px; }
+  .faq summary { padding: 16px 18px; }
+  .faq details p { padding: 0 18px 16px; }
+  .doc { padding-top: 24px; padding-bottom: 56px; }
   .doc-card { padding: 20px; }
+  .dev-intro { padding: 14px 16px; gap: 14px; }
+  .dev-intro img { width: 56px; height: 56px; }
   .nav a { padding: 8px; }
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+}
+
+/* Kleine telefoons (iPhone SE, 320-400px) */
+@media (max-width: 400px) {
+  .logo { font-size: 16px; gap: 8px; }
+  .logo img { width: 30px; height: 30px; }
+  .nav { gap: 2px; }
+  .nav a { font-size: 13px; padding: 6px 8px; }
+  .screen-title { font-size: 26px; }
+  .button { padding: 14px 20px; }
+  .duck-card h2 { font-size: 22px; }
+  .feature, .step { padding: 20px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
