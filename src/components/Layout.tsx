@@ -7,7 +7,7 @@ export default function Layout() {
       <header className="header">
         <div className="container header-inner">
           <Link to="/" className="logo">
-            <img src="/favicon.svg" alt="" width={28} height={28} />
+            <img src="/apple-touch-icon.png" alt="" width={34} height={34} />
             {site.name}
           </Link>
           <nav className="nav">

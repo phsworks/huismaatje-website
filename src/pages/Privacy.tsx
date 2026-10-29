@@ -3,9 +3,12 @@ import { dataCategories, processors } from '../content/privacyData'
 
 export default function Privacy() {
   return (
-    <article className="container prose">
-      <h1>Privacyverklaring</h1>
-      <p className="muted">Laatst bijgewerkt: {site.legalUpdated}</p>
+    <article className="container doc">
+      <header className="doc-head">
+        <h1 className="screen-title">Privacyverklaring</h1>
+        <p className="muted">Laatst bijgewerkt: {site.legalUpdated}</p>
+      </header>
+      <div className="doc-card">
 
       <p>
         {site.name} vindt jouw privacy belangrijk. In deze verklaring lees je welke
@@ -23,7 +26,7 @@ export default function Privacy() {
 
       <h2>Welke gegevens verwerken we?</h2>
       {dataCategories.length === 0 ? (
-        <p className="muted">Dit overzicht wordt binnenkort aangevuld.</p>
+        <p className="empty">📋 Dit overzicht wordt binnenkort aangevuld.</p>
       ) : (
         <div className="table-wrap">
           <table>
@@ -99,6 +102,7 @@ export default function Privacy() {
         We kunnen deze verklaring aanpassen als de app verandert. De datum bovenaan
         laat zien wanneer dat voor het laatst is gebeurd.
       </p>
+      </div>
     </article>
   )
 }

@@ -3,9 +3,12 @@ import { site } from '../content/site'
 
 export default function Terms() {
   return (
-    <article className="container prose">
-      <h1>Gebruiksvoorwaarden</h1>
-      <p className="muted">Laatst bijgewerkt: {site.legalUpdated}</p>
+    <article className="container doc">
+      <header className="doc-head">
+        <h1 className="screen-title">Gebruiksvoorwaarden</h1>
+        <p className="muted">Laatst bijgewerkt: {site.legalUpdated}</p>
+      </header>
+      <div className="doc-card">
 
       <h2>1. Over deze voorwaarden</h2>
       <p>
@@ -49,6 +52,7 @@ export default function Terms() {
         Vragen over deze voorwaarden? Mail naar{' '}
         <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>.
       </p>
+      </div>
     </article>
   )
 }
