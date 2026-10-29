@@ -55,15 +55,6 @@ const extras = [
   { emoji: '🎩', color: 'var(--cat-overig)', title: 'Eendje aankleden', text: 'Hoge hoed, piratenhoed, zonnebril of vlinderstrik: geef je eendje de beste looks.' },
 ]
 
-// Voorbeeldtaken voor de telefoon-mockup. Alleen categorieën die nog in de app
-// zitten (huismaatje/constants/Categories.ts): Schoonmaken, Keuken, Afval, Overig.
-const mockTasks = [
-  { emoji: '🧹', color: 'var(--cat-schoonmaken)', name: 'Stofzuigen', meta: 'Schoonmaken · Ma · Jij', done: true },
-  { emoji: '🍳', color: 'var(--cat-was)', name: 'Vaatwasser uitruimen', meta: 'Keuken · Di · Sanne', done: false },
-  { emoji: '🗑️', color: 'var(--cat-afval)', name: 'Vuilnis buiten zetten', meta: 'Afval · Do · Jij', done: false },
-  { emoji: '✨', color: 'var(--cat-overig)', name: 'Planten water geven', meta: 'Overig · Za · Ruben', done: false },
-]
-
 const faq = [
   {
     q: 'Op welke telefoons werkt Huismaatje?',
@@ -79,6 +70,9 @@ const faq = [
   },
 ]
 
+// Seconde in mockup.mp4 waarop de telefoon stilstaat (zie .phone-video in index.css).
+const VIDEO_START = 7
+
 export default function Home() {
   return (
     <>
@@ -86,7 +80,7 @@ export default function Home() {
         <div className="container hero-inner">
           <div>
             <p className="pill">🚀 Binnenkort in de App Store en Google Play</p>
-            <h1>Een schoon huis, samen.</h1>
+            <h1>Samen voor een schoner huis.</h1>
             <p className="lead">
               {site.name} verdeelt de huishoudtaken eerlijk tussen huisgenoten. Laat je
               taken liggen? Dan wordt jullie huis viezer, en je eendje ook. Houd je eendje en
@@ -126,35 +120,20 @@ export default function Home() {
 
       <section className="container preview-section">
         <div className="preview-card">
-          <div className="phone" role="img" aria-label="Het Huis-scherm van de Huismaatje-app op een telefoon">
-            <div className="phone-screen" aria-hidden>
-              <div className="phone-notch" />
-              <p className="phone-title">Ons huis</p>
-              <div className="phone-house">
-                <img className="house" src="/house.png" alt="" />
-                <img className="duck" src="/duck.png" alt="" />
-              </div>
-              <p className="phone-label">Deze week</p>
-              <ul className="phone-tasks">
-                {mockTasks.map((t) => (
-                  <li key={t.name} className={t.done ? 'done' : undefined}>
-                    <span className="phone-cat" style={{ background: t.color }}>{t.emoji}</span>
-                    <span className="phone-task-text">
-                      <span className="phone-task-name">{t.name}</span>
-                      <span className="phone-task-meta">{t.meta}</span>
-                    </span>
-                    <span className="phone-check">{t.done ? '✓' : ''}</span>
-                  </li>
-                ))}
-              </ul>
-              <div className="phone-add">+ Taak toevoegen</div>
-              <div className="phone-tabbar">
-                <span className="active">🏠</span>
-                <span>📅</span>
-                <span>📊</span>
-                <span>🦆</span>
-              </div>
-            </div>
+          <div className="phone-video">
+            {/* De eerste seconden zoomt de telefoon in; die slaan we over, ook bij herhalen. */}
+            <video
+              src={`/mockup.mp4#t=${VIDEO_START}`}
+              autoPlay
+              muted
+              playsInline
+              preload="auto"
+              onEnded={(e) => {
+                e.currentTarget.currentTime = VIDEO_START
+                void e.currentTarget.play()
+              }}
+              aria-label="Video van de Huismaatje-app op een telefoon"
+            />
           </div>
           <div>
             <p className="section-label">Zo ziet het eruit</p>

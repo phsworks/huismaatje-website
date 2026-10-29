@@ -13,13 +13,36 @@ export default function Developer() {
           <img src="/duck.png" alt="" width={72} height={72} />
           <p>
             {site.name} is gemaakt
-            {site.developer ? <> door <strong>{site.developer}</strong></> : ' door één ontwikkelaar'}
-            . Geen groot bedrijf, maar een klein, onafhankelijk project.
+            {site.developer ? (
+              <>
+                {' '}door{' '}
+                <strong>
+                  {site.developerUrl
+                    ? <a href={site.developerUrl} target="_blank" rel="noopener noreferrer">{site.developer}</a>
+                    : site.developer}
+                </strong>
+              </>
+            ) : ' door één ontwikkelaar'}
+            , vanuit een probleem dat iedereen in een studentenhuis of gedeeld huis
+            wel kent.
           </p>
         </div>
 
         <h2>🧽 Waarom Huismaatje?</h2>
-        {/* TODO(human) */}
+        <p>
+          Wie doet deze week de wc? Wie bracht als laatste het glas weg? In veel huizen
+          wordt dat bijgehouden op een whiteboard in de gang, een schema op de koelkast
+          of een appgroep waarin berichten snel ondersneeuwen. Dat werkt, totdat de stift
+          opdroogt, iemand het vergeet of niemand meer weet wie er aan de beurt was.
+        </p>
+        <p>
+          {site.name} is ontstaan om dat beter te doen. Taken verdelen, bijhouden wie
+          wat heeft gedaan en elkaar eraan herinneren gebeurt in de app, en op een
+          leuke, interactieve manier: met een eigen eendje dat vies wordt als je taken
+          blijft liggen, hoedjes om het aan te kleden en een ranglijst voor een beetje
+          gezonde competitie. Zo voelt het huishouden minder als een klus en meer als
+          iets wat je samen doet.
+        </p>
 
         <h2>🛠️ Hoe het gemaakt is</h2>
         <p>
@@ -35,6 +58,14 @@ export default function Developer() {
           je eendje? Mail naar <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>.
           Elk bericht wordt gelezen.
         </p>
+        {site.developerUrl && (
+          <p>
+            Benieuwd naar ander werk van {site.developer}? Kijk op{' '}
+            <a href={site.developerUrl} target="_blank" rel="noopener noreferrer">
+              {site.developerUrl.replace(/^https?:\/\//, '')}
+            </a>.
+          </p>
+        )}
       </div>
     </article>
   )

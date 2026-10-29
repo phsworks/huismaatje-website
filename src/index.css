@@ -104,34 +104,17 @@ main { flex: 1; }
 .tint-overzicht { background: var(--tab-overzicht); }
 .tint-profiel { background: var(--tab-profiel); }
 
-/* App-preview: een in CSS getekende telefoon met het Huis-scherm erin.
-   Alle maten in em, zodat de hele telefoon meeschaalt via font-size. */
+/* App-preview: video van de app naast de uitleg. */
 .preview-section { padding-top: 40px; padding-bottom: 24px; }
 .preview-card { background: var(--tab-huis); border-radius: var(--r-card); padding: 40px; display: grid; grid-template-columns: auto 1fr; gap: 48px; align-items: center; }
 .preview-card h2 { font-size: 26px; font-weight: 700; letter-spacing: -0.5px; margin: 0 0 8px; }
 .preview-card p { color: var(--text-mid); margin: 0; }
-.phone { font-size: 10px; width: 28em; padding: 1.1em; border-radius: 4.6em; background: #1e2330; box-shadow: var(--shadow-raised), inset 0 0 0 0.25em #3a4152; }
-.phone-screen { position: relative; overflow: hidden; border-radius: 3.6em; background: var(--bg); padding: 4.4em 1.6em 0; display: flex; flex-direction: column; gap: 1em; }
-.phone-notch { position: absolute; top: 1.1em; left: 50%; transform: translateX(-50%); width: 9em; height: 2.6em; border-radius: 1.3em; background: #1e2330; }
-.phone-title { font-size: 2.4em; font-weight: 700; letter-spacing: -0.03em; margin: 0; color: var(--text); }
-.phone-house { position: relative; aspect-ratio: 16 / 9; border-radius: 2em; background: #eafefe; overflow: hidden; box-shadow: var(--shadow-card); }
-.phone-house::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 9%; background: #a8cf45; }
-.phone-house .house { position: absolute; left: 8%; bottom: 6%; height: 92%; }
-.phone-house .duck { position: absolute; right: 10%; bottom: 6%; height: 34%; z-index: 1; }
-.preview-card .phone-label { font-size: 1.2em; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-mid); margin: 0.4em 0 -0.2em; }
-.phone-tasks { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.8em; }
-.phone-tasks li { display: flex; align-items: center; gap: 1.1em; background: var(--card); border-radius: 1.6em; padding: 1em 1.2em; box-shadow: var(--shadow-card); }
-.phone-cat { flex: none; font-size: 1.7em; width: 2.1em; height: 2.1em; border-radius: 0.65em; display: flex; align-items: center; justify-content: center; }
-.phone-task-text { flex: 1; min-width: 0; display: flex; flex-direction: column; }
-.phone-task-name { font-size: 1.5em; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.phone-task-meta { font-size: 1.2em; color: var(--text-mid); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.phone-check { flex: none; width: 2.6em; height: 2.6em; border-radius: 50%; border: 0.2em solid var(--border); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 1.1em; }
-.phone-tasks .done .phone-task-name { text-decoration: line-through; color: var(--text-mid); }
-.phone-tasks .done .phone-check { background: var(--green); border-color: var(--green); }
-.phone-add { align-self: stretch; text-align: center; padding: 1.2em; border-radius: 1.8em; background: var(--primary); color: #fff; font-weight: 700; font-size: 1.4em; }
-.phone-tabbar { display: flex; justify-content: space-around; margin: 0.4em -1.6em 0; padding: 1.2em 0 2.2em; background: var(--card); box-shadow: 0 -0.3em 1em rgba(31, 58, 104, 0.06); font-size: 2em; }
-.phone-tabbar span { opacity: 0.45; filter: grayscale(1); }
-.phone-tabbar .active { opacity: 1; filter: none; }
+/* De video is 1920x1080 met de telefoon in het midden op zwart (x 723-1120,
+   y 150-970). De wrapper heeft de maat van alleen de telefoon en de video wordt
+   zo verschoven dat precies dat stuk zichtbaar is. */
+.phone-video { position: relative; width: 300px; aspect-ratio: 398 / 821; overflow: hidden; border-radius: 15% / 7.3%; background: #000; box-shadow: var(--shadow-raised); }
+/* De export is donkerder dan de app: wit komt uit op ~220 i.p.v. 255. brightness(1.15) trekt dat recht. */
+.phone-video video { position: absolute; width: 482.4%; height: 131.55%; left: -181.66%; top: -18.27%; max-width: none; filter: brightness(1.15); }
 
 /* Zo werkt het: genummerde stappen op witte kaarten */
 .steps-section { padding-top: 40px; padding-bottom: 24px; }
@@ -200,8 +183,7 @@ th { background: var(--bg); color: var(--text-mid); font-size: 12px; font-weight
   .duck-card { grid-template-columns: 1fr; text-align: center; padding: 24px; }
   .duck-stage { max-width: 200px; margin: 0 auto; }
   .preview-card { grid-template-columns: 1fr; text-align: center; padding: 28px 20px; gap: 28px; }
-  .preview-card .phone { margin: 0 auto; }
-  .preview-card .phone-screen { text-align: left; }
+  .preview-card .phone-video { margin: 0 auto; }
   .preview-card h2 { font-size: 22px; }
   .hero-art { width: 100%; max-width: 340px; margin: 0 auto; }
   .lead { font-size: 17px; }
@@ -229,7 +211,7 @@ th { background: var(--bg); color: var(--text-mid); font-size: 12px; font-weight
   .button { padding: 14px 20px; }
   .duck-card h2 { font-size: 22px; }
   .feature, .step { padding: 20px; }
-  .phone { font-size: 8.8px; }
+  .phone-video { width: 264px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
