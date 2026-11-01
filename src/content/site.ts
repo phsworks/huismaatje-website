@@ -3,7 +3,7 @@
 export const site = {
   name: 'Huismaatje',
   domain: 'jouwhuismaatje.nl',
-  contactEmail: 'piethein@phsdevelopment.nl',
+  contactEmail: 'info@huismaatje.nl',
   // Vul in zodra bekend (verplicht in privacyverklaring)
   company: 'Huismaatje',
   kvk: '',
