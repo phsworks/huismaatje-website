@@ -34,7 +34,7 @@ const features: { emoji?: string; icon?: string; tint: string; title: string; te
 const steps = [
   {
     title: 'Maak een huis',
-    text: 'Je krijgt een 6-cijferige code. Deel die met je huisgenoten, dan zitten jullie binnen een minuut samen in de app.',
+    text: 'Je krijgt meteen een 6-cijferige code. Kopieer of deel die met één tik met je huisgenoten, dan zitten jullie binnen een minuut samen in de app.',
   },
   {
     title: 'Zet jullie vaste taken klaar',
@@ -179,9 +179,8 @@ export default function Home() {
 
       <section className="container duck-section">
         <div className="duck-card">
-          <div className="duck-stage">
-            <img src="/duck.png" alt="Het Huismaatje-eendje" />
-          </div>
+          <img className="duck-icon" src="/app-icon.png" alt="Het Huismaatje-eendje" />
+
           <div>
             <p className="section-label">Jouw huismaatje</p>
             <h2>Houd je eendje en je huis schoon.</h2>

@@ -3,7 +3,7 @@
 export const site = {
   name: 'Huismaatje',
   domain: 'jouwhuismaatje.nl',
-  contactEmail: 'info@huismaatje.nl',
+  contactEmail: 'info@jouwhuismaatje.nl',
   // Vul in zodra bekend (verplicht in privacyverklaring)
   company: 'Huismaatje',
   kvk: '',
@@ -11,5 +11,5 @@ export const site = {
   // Naam van de maker, voor 'Over de ontwikkelaar'. Leeg = niet tonen.
   developer: 'PHS Development',
   developerUrl: 'https://phsdevelopment.nl',
-  legalUpdated: '29 oktober 2026',
+  legalUpdated: '1 november 2026',
 }

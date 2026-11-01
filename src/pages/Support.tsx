@@ -17,7 +17,8 @@ export default function Support() {
 
         <h2>🏠 Bij een huis komen</h2>
         <p>
-          Vraag een huisgenoot om de 6-cijferige code van jullie huis. Kies bij het
+          Vraag een huisgenoot om de 6-cijferige code van jullie huis. Die kan de code
+          in de app direct kopiëren of delen, bijvoorbeeld via WhatsApp. Kies bij het
           aanmelden voor "Huis joinen" en vul de code in.
         </p>
 
